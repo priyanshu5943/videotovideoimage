@@ -53,7 +53,7 @@ def plot_all(images, axis='off', figsize=(16, 8)):
     plt.show()
 
 # Create the directory if it doesn't exist
-output_dir = r'/kaggle/working/videotovideoimage/testsets/real-inputs'
+output_dir = r'content/videotovideoimage/testsets/real-inputs'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
