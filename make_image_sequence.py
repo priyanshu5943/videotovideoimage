@@ -20,11 +20,16 @@ import argparse
 def parse_args():
     parser = argparse.ArgumentParser(description='Process video file and extract frames')
     parser.add_argument('--file_path', type=str, required=True, help='Path to the input video file')
+    parser.add_argument('--output_dir', type=str, required=True, help='Path to the output directory')
     return parser.parse_args()
 
 # Parse command-line arguments
 args = parse_args()
 
+# Create the output directory if it doesn't exist
+output_dir = args.output_dir
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 # Creating helper function
 
@@ -52,11 +57,6 @@ def plot_all(images, axis='off', figsize=(16, 8)):
         plt.imshow(images[i])
     plt.show()
 
-# Create the directory if it doesn't exist
-output_dir = r'/content/videotovideoimage/testsets/real-inputs'
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
-
 # Open the video file
 file_path = args.file_path
 video_stream = cv2.VideoCapture(file_path)
@@ -83,6 +83,3 @@ with open(frame_list_filename, 'w') as frame_list_file:
 
 # Release the video stream
 video_stream.release()
-
-
-
