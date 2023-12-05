@@ -16,10 +16,7 @@ def images_to_video(image_folder, video_name, fps):
     images = [img for img in os.listdir(image_folder) if img.endswith(".png")]
 
     # Check if there are no images in the folder
-    if not images:
-        print("No images found in the specified folder.")
-        return
-
+    
     # Read the first image to get dimensions
     frame = cv2.imread(os.path.join(image_folder, images[0]))
     height, width, layers = frame.shape
